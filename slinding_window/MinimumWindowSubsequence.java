@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main{
+public class MinimumWindowSubsequence{
     public static String minWindow(String s, String t) {
         
         // Replace this placeholder return statement with your code
@@ -39,3 +39,58 @@ public class Main{
         return minSubsequence;
     }
 }
+
+
+// import java.util.*;
+
+// public class Main{
+//     public static String minWindow(String s, String t) {
+
+//         // Replace this placeholder return statement with your code
+//        if (s == null || t == null || s.length() < t.length()) {
+//             return "";
+//         }
+        
+//         // Create a map to count all characters in t
+//         Map<Character, Integer> targetMap = new HashMap<>();
+//         for (char c : t.toCharArray()) {
+//             targetMap.put(c, targetMap.getOrDefault(c, 0) + 1);
+//         }
+
+//         // Create a map to count all characters in the current window in s
+//         Map<Character, Integer> windowMap = new HashMap<>();
+//         int left = 0, right = 0;
+//         int minLeft = 0, minLen = Integer.MAX_VALUE;
+//         int required = targetMap.size();
+//         int formed = 0;
+
+//         while (right < s.length()) {
+//             char c = s.charAt(right);
+//             windowMap.put(c, windowMap.getOrDefault(c, 0) + 1);
+
+//             if (targetMap.containsKey(c) && windowMap.get(c).intValue() == targetMap.get(c).intValue()) {
+//                 formed++;
+//             }
+
+//             while (left <= right && formed == required) {
+//                 c = s.charAt(left);
+
+//                 if (right - left + 1 < minLen) {
+//                     minLeft = left;
+//                     minLen = right - left + 1;
+//                 }
+
+//                 windowMap.put(c, windowMap.get(c) - 1);
+//                 if (targetMap.containsKey(c) && windowMap.get(c).intValue() < targetMap.get(c).intValue()) {
+//                     formed--;
+//                 }
+
+//                 left++;
+//             }
+
+//             right++;
+//         }
+
+//         return minLen == Integer.MAX_VALUE ? "" : s.substring(minLeft, minLeft + minLen);
+//     }
+// }
